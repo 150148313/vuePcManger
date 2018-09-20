@@ -1,0 +1,44 @@
+.text_cen {
+  text-align: center;
+}
+
+.text_left {
+  text-align: left;
+}
+
+.text_right {
+  text-align: right;
+}
+
+.text_margin {
+  margin: 10px auto;
+}
+
+.reimg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.text_inout {
+  text-indent: -9999px;
+}
+
+/*蒙版*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mask1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.mright{
+  width: 94%;
+}
