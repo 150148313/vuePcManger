@@ -197,6 +197,25 @@
                    </el-col>
                  </el-row>
                </el-col>
+               <el-col :span="24">
+                 <el-row>
+                   <el-col :span="8" class="text_inout">1</el-col>
+                   <el-col :span="16">
+                     <div class="block">
+                       <span class="demonstration"></span>
+                       <el-pagination
+                         @size-change="handleSizeChange"
+                         @current-change="handleCurrentChange"
+                         :current-page="currentPage4"
+                         :page-sizes="[5, 10, 20, 30]"
+                         :page-size="100"
+                         layout="total, sizes, prev, pager, next, jumper"
+                         :total="400">
+                       </el-pagination>
+                     </div>
+                   </el-col>
+                 </el-row>
+               </el-col>
              </el-row>
            </el-col>
         </el-row>
@@ -213,9 +232,9 @@
   data () {
     return {
       data: '',
-      icheck: [],
-      all: false,
-      checklist: [1, 2, 3, 4, 5, 6],
+      icheck: [], // 判断是否选择
+      all: false, // 判断是否全选
+      checklist: [1, 2, 3, 4, 5], // 内容数组
       openlist: [], // 子导航判断
       selectlist: [], // 选择判断
       list: [
@@ -240,6 +259,10 @@
           title: '积分商品  '
         }
       ], // 左导航子类
+      currentPage1: 5,
+      currentPage2: 5,
+      currentPage3: 5,
+      currentPage4: 4,
       icon: ['icon-xiaotuziCduan_1', 'icon-xiaotuziCduan_', 'icon-dagou', 'icon-dian-copy'] // 各种切换的图标
     }
   },
@@ -303,6 +326,16 @@
       } else {
         this.$message.error('错了哦，没有选中')
       }
+    },
+    handleSizeChange (e) {
+      var array = this.checklist.length // 因为 vue 的数据实时刷新, 所以初始化一个变量
+      for (var i = 0; i < Math.abs(e - array); i++) {
+        console.log(Math.abs(e - this.checklist.length))
+        e - array > 0 ? this.checklist.push(e) : this.checklist.splice(this.checklist.length - 1, 1)
+      }
+    },
+    handleCurrentChange (e) {
+      this.checklist.length === 0 ? this.checklist = [1, 2, 3, 4, 5] : ''
     }
   }
 }
