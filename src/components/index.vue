@@ -304,6 +304,7 @@
     },
     allbt () {
       if (!this.all) {
+        this.icheck = []
         for (var v in this.checklist) {
           this.icheck.push(parseInt(v))
         }
@@ -335,7 +336,7 @@
       }
     },
     handleCurrentChange (e) {
-      this.checklist.length === 0 ? this.checklist = [1, 2, 3, 4, 5] : ''
+      this.checklist.length === 0 ? this.checklist = [1, 2, 3, 4, 5] : this.checklist = this.checklist
     }
   }
 }
